@@ -1,0 +1,91 @@
+﻿@using System.Security.Principal
+
+<section>
+    <div>
+        <nav class="navbar is-warning">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item">
+                        <img src="/img/logo.png" width="48" height="48">
+                    </a>
+                    <span class="navbar-burger burger" data-target="navbarMenuHero6">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
+                <div id="navbarMenuHero6" class="navbar-menu">
+                    <div class="navbar-end">
+                        <a class="navbar-item is-active">
+                            Home
+                        </a>
+                        <a class="navbar-item">
+                            Examples
+                        </a>
+                        <a class="navbar-item">
+                            Documentation
+                        </a>
+                        @if(User.Identity.IsAuthenticated){
+                            <div class="navbar-item has-dropdown is-hoverable">
+                                <div class="navbar-link">
+                                    Hello, @User.Identity.Name
+                                </div>
+                                <div id="moreDropdown" class="navbar-dropdown ">
+                                    <a class="navbar-item" href="/MicrosoftIdentity/Account/EditProfile">
+                                       Edit profile
+                                    </a>
+                                </div>
+                            </div>
+                            <a class="navbar-item" href="/MicrosoftIdentity/Account/SignOut">
+                                Sign out
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="navbar-item" href="/MicrosoftIdentity/Account/SignIn">
+                                Register / Sign in
+                            </a>
+                        }
+                        
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Hero content: will be in the middle -->
+    @if (ViewBag.HasHero != null)
+    {
+        <div class="hero @ViewBag.HeroClass">
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <h1 class="title">
+                        @ViewBag.HeroTitle
+                    </h1>
+                    @if (ViewBag.HeroSubtitle != null)
+                    {
+                        <h2 class="subtitle">
+                            @ViewBag.HeroSubtitle
+                        </h2>
+                    }
+                </div>
+            </div>
+            @if (ViewBag.HeroFooter != null)
+            {
+                <div class="hero-foot">
+                    <nav class="tabs">
+                        <div class="container">
+                            <ul>
+                                @foreach (var item in (List<KeyValuePair<string, string>>)ViewBag.HeroFooter)
+                                {
+                                    <li>
+                                        <a href="#@item.Key">@item.Value</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            }
+        </div>
+    }
+</section>

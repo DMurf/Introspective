@@ -1,8 +1,51 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    ViewBag.HasHero = true;
+    ViewBag.HeroTitle = "Introspective";
+    ViewBag.HeroSubTitle = "\"The examination or observation of one's own mental and emotional processes.\"";
+    ViewBag.HeroClass = "is-danger is-medium";
+
+
+    var kvPair = new List<KeyValuePair<string, string>>();
+    kvPair.Add(new KeyValuePair<string, string>("aboutus", "About us"));
+    kvPair.Add(new KeyValuePair<string, string>("value", "Values"));
+    ViewBag.HeroFooter = kvPair;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+<section class="section">
+    <div class="container">
+        <div class="columns is-multiline">
+            <div class="column is-12 has-text-centered">
+                <h2 class="is-size-2">About the app</h2>
+            </div>
+            <div class="column is-6">
+                <img src="https://placehold.co/600x400" />
+            </div>
+            <div class="column is-6">
+                <div class="content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper condimentum justo, ac porta lacus consequat sed. Nam eu lectus ut ipsum consequat varius. Donec at arcu tellus. Suspendisse potenti. Morbi vel venenatis lorem. Cras tincidunt gravida tellus, non venenatis ex facilisis auctor. Nullam tempor fringilla sapien, id sodales lacus feugiat vitae. Integer eget hendrerit dui.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section has-background-primary">
+    <div class="container">
+        <div class="columns is-multiline">
+            <div class="column is-12 has-text-centered">
+                <h2 class="is-size-2">About the app</h2>
+            </div>
+
+            <div class="column is-6">
+                <div class="content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper condimentum justo, ac porta lacus consequat sed. Nam eu lectus ut ipsum consequat varius. Donec at arcu tellus. Suspendisse potenti. Morbi vel venenatis lorem. Cras tincidunt gravida tellus, non venenatis ex facilisis auctor. Nullam tempor fringilla sapien, id sodales lacus feugiat vitae. Integer eget hendrerit dui.</p>
+                </div>
+            </div>
+            <div class="column is-6">
+                <img src="https://placehold.co/600x400" />
+            </div>
+        </div>
+    </div>
+</section>

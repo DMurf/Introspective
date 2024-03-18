@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile-sass": "sass styles/main.scss wwwroot/css/main.css"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bulma": "^0.9.4",
-    "jquery": "^3.7.1"
+    "jquery": "^3.7.1",
+    "sass": "^1.72.0"
   }
 }
