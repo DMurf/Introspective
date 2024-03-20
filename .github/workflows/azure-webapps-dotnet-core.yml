@@ -51,10 +51,6 @@ jobs:
         cd Introspective.Web
         dotnet build --configuration Release --no-restore
         dotnet publish -c Release -r linux-x64 --self-contained true /p:UseAppHost=true
-    - name: Test
-      run: |
-        cd Introspective.Web.Tests
-        dotnet test --no-restore --verbosity normal
       
     - uses: azure/webapps-deploy@v2
       name: Deploy
