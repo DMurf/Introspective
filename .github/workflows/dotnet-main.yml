@@ -36,7 +36,7 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
 
-    - uses: azure/webapps-deploy@v4
+    - uses: azure/webapps-deploy@v3
       name: Deploy
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
