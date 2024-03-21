@@ -1,13 +1,11 @@
 // Overrides
 @if $bulmaswatch-import-font {
-    @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700&display=swap");
+    @import url("https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700&display=swap");
 }
 
 .button {
     &.is-active,
-    &.is-focused,
-    &:active,
-    &:focus {
+    &:active {
         box-shadow: inset 1px 1px 4px rgba($grey-darker, 0.3);
     }
 
@@ -16,19 +14,23 @@
         $color-invert: nth($pair, 2);
 
         &.is-#{$name} {
+            border-color: darken($color, 5);
+
             &.is-hovered,
             &:hover {
                 background-color: darken($color, 10);
             }
 
             &.is-active,
-            &.is-focused,
-            &:active,
-            &:focus {
+            &:active {
                 box-shadow: inset 1px 0 3px rgba($grey-darker, 0.3);
                 background-color: darken($color, 10);
             }
         }
+    }
+
+    &.is-loading:after {
+        border-color: transparent transparent $grey-light $grey-light;
     }
 }
 
@@ -36,6 +38,11 @@
 .textarea {
     box-shadow: none;
 }
+
+// .box,
+// .card {
+//   box-shadow: 0 0 0 1px $border;
+// }
 
 .notification {
     @each $name, $pair in $colors {
@@ -51,105 +58,39 @@
     }
 }
 
-.progress {
-    height: $size-small;
-}
+.navbar {
+    &.is-transparent {
+        background-color: transparent;
 
-.progress,
-.tag {
-    border-radius: $radius;
-}
+        .navbar-item,
+        .navbar-link {
+            color: $link;
 
-.navbar:not(.is-transparent) {
-    background-color: $black-ter;
-
-    .navbar-menu {
-        background-color: $black-ter;
-    }
-
-    .navbar-item,
-    .navbar-link {
-        color: $white;
-
-        &.has-dropdown:hover .navbar-link,
-        &:hover {
-            background-color: rgba($white, 0.05);
+            &:after {
+                border-color: currentColor;
+            }
         }
-
-        &.is-active,
-        &:active {
-            background-color: rgba($black-ter, 0.05);
-            color: $primary;
-        }
-    }
-
-    .navbar-burger:hover {
-        background-color: rgba($black-ter, 0.05);
-    }
-
-    .navbar-link::after {
-        border-color: $white;
     }
 
     @include from($navbar-breakpoint) {
-        .navbar-dropdown .navbar-item {
-            color: $grey-dark;
-
-            &:hover {
-                background-color: rgba($black-ter, 0.05);
-            }
-
-            &.is-active,
-            &:active {
-                color: $primary;
-            }
-
-            strong {
-                color: $grey;
-            }
+        .has-dropdown .navbar-item {
+            color: $text;
         }
     }
 
-    .navbar-burger {
-        span {
-            background-color: $white;
+    @include until($navbar-breakpoint) {
+        .navbar-menu {
+            background-color: inherit;
         }
-    }
 
-    strong {
-        color: $white-ter;
-    }
+        @each $name, $pair in $colors {
+            $color: nth($pair, 1);
+            $color-invert: nth($pair, 2);
 
-    @each $name, $pair in $colors {
-        $color: nth($pair, 1);
-        $color-invert: nth($pair, 2);
-
-        &.is-#{$name} {
-            background-color: $color;
-
-            .navbar-menu {
-                background-color: $color;
-            }
-
-            .navbar-item,
-            .navbar-link {
-                @media (max-width: $desktop) {
+            &.is-#{$name} {
+                .navbar-item,
+                .navbar-link {
                     color: $color-invert;
-                }
-
-                &.is-active,
-                &:active {
-                    color: $color-invert;
-                }
-            }
-
-            .navbar-burger {
-                &:hover {
-                    background-color: darken($color, 5);
-                }
-
-                span {
-                    background-color: $color-invert;
                 }
             }
         }
@@ -157,9 +98,21 @@
 }
 
 .hero {
-    // Colors
-    .navbar:not(.is-transparent) {
-        background-color: $black-ter;
+    .navbar {
+        .navbar-item,
+        .navbar-link {
+            color: $link;
+
+            &:after {
+                border-color: currentColor;
+            }
+        }
+
+        @include from($navbar-breakpoint) {
+            .has-dropdown .navbar-item {
+                color: $text;
+            }
+        }
     }
 
     @each $name, $pair in $colors {
@@ -167,40 +120,21 @@
         $color-invert: nth($pair, 2);
 
         &.is-#{$name} {
-            .navbar {
-                background: none;
-            }
-
             .navbar-item,
             .navbar-link {
                 color: $color-invert;
-
-                &.is-active,
-                &:hover {
-                    background-color: darken($color, 10);
-                    color: $color-invert;
-                }
-
-                &:after {
-                    border-color: $color-invert;
-                }
-            }
-
-            .navbar-menu {
-                background-color: $color;
-            }
-
-            .navbar-burger {
-                span {
-                    background-color: $color-invert;
-                }
-            }
-
-            @include from($navbar-breakpoint) {
-                .navbar-dropdown a.navbar-item {
-                    color: $grey-dark;
-                }
             }
         }
     }
+}
+
+.progress,
+.tag {
+    border-radius: $radius;
+}
+
+.kanban-item {
+    @extend .notification;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    animation: append-animate 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }

@@ -2,11 +2,11 @@
 
 <section>
     <div>
-        <nav class="navbar is-warning">
+        <nav class="navbar is-primary">
             <div class="container">
                 <div class="navbar-brand">
-                    <a class="navbar-item">
-                        <img src="/img/logo.png" width="48" height="48">
+                    <a class="navbar-item" href="@Url.Action("Index", "Home")">
+                        <img src="/img/feedbacks.png" width="48" height="48">
                     </a>
                     <span class="navbar-burger burger" data-target="navbarMenuHero6">
                         <span></span>
@@ -16,14 +16,11 @@
                 </div>
                 <div id="navbarMenuHero6" class="navbar-menu">
                     <div class="navbar-end">
-                        <a class="navbar-item is-active">
+                        <a class="navbar-item is-active" href="@Url.Action("Index", "Home")">
                             Home
                         </a>
-                        <a class="navbar-item">
-                            Examples
-                        </a>
-                        <a class="navbar-item">
-                            Documentation
+                        <a class="navbar-item" href="@Url.Action("Index", "Boards")">
+                            Boards
                         </a>
                         @if(User.Identity.IsAuthenticated){
                             <div class="navbar-item has-dropdown is-hoverable">
@@ -46,6 +43,10 @@
                                 Register / Sign in
                             </a>
                         }
+
+                        <a class="navbar-item" href="@Url.Action("Index", "Profile")">
+                            Profile
+                        </a>
                         
                     </div>
                 </div>
