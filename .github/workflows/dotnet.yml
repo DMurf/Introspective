@@ -27,17 +27,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
 
-    #substitute production appsettings entries to appsettings json file
-    - name: App Settings Variable Substitution
-      uses: microsoft/variable-substitution@v1
-      with:
-        files: '${{env.DOTNET_ROOT}}/introspective/introspective.web\appsettings.json'
-      env:
-        AzureAdB2C.Instance: ${{ secrets.INSTANCE }}
-        AzureAdB2C.ClientId: ${{ secrets.CLIENTID }}
-        AzureAdB2C.Domain: ${{ secrets.DOMAIN }}
-        AzureAdB2C.secretValue: ${{ secrets.SECRETVALUE }}
-        AzureAdB2C.secretId: ${{ secrets.SECRETID }}
+
       
     - name: Build
       run: dotnet build --no-restore
