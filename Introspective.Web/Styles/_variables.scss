@@ -6,10 +6,10 @@ $black: #000000;
 $orange: #F75C03;
 $green: #5efc8d;
 $radius: 0rem;
-
+$navbar-item-img-max-height:48px;
 
 // Path to Bulma's sass folder
-@use "../node_modules/bulma/sass" with ( $family-primary: '"Nunito", sans-serif', $primary: $saffron, $info:$amethyst, $success:$green, $warning:$orange, $radius:$radius );
+@use "../node_modules/bulma/sass" with ( $family-primary: '"Nunito", sans-serif', $primary: $saffron, $info: $amethyst, $success: $green, $warning: $orange, $radius: $radius, $navbar-item-img-max-height: $navbar-item-img-max-height );
 
 // Import the Google Font
 @import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
