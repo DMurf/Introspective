@@ -14,3 +14,11 @@ $(document).ready(function () {
 
     });
 });
+
+
+$(document).ready(function () {
+    $("#nightMode").click(function () {
+        event.preventDefault();
+        $("html").toggleClass("theme-light theme-dark");
+    });
+}); 
