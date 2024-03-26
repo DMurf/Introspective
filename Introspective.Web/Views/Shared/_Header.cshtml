@@ -1,5 +1,9 @@
 ﻿@using System.Security.Principal
 
+@{
+    ViewBag.UserName = string.IsNullOrEmpty(User.Identity?.Name) ? "Hello!" : "Hello, " + User.Identity.Name;
+}
+
 <section>
     <div>
         <nav class="navbar is-primary">
@@ -25,7 +29,7 @@
                         @if(User.Identity.IsAuthenticated){
                             <div class="navbar-item has-dropdown is-hoverable">
                                 <div class="navbar-link">
-                                    Hello, @User.Identity.Name
+                                    @ViewBag.UserName
                                 </div>
                                 <div id="moreDropdown" class="navbar-dropdown ">
                                     <a class="navbar-item" href="/MicrosoftIdentity/Account/EditProfile">
@@ -33,13 +37,13 @@
                                     </a>
                                 </div>
                             </div>
-                            <a class="navbar-item" href="/MicrosoftIdentity/Account/SignOut">
+                            <a class="navbar-item" href="/MicrosoftIdentity/Account/SignOut?post_logout_redirect_uri=/">
                                 Sign out
                             </a>
                         }
                         else
                         {
-                            <a class="navbar-item" href="/MicrosoftIdentity/Account/SignIn">
+                            <a class="navbar-item" href="@Url.Action("Loginup", "Profile")">
                                 Register / Sign in
                             </a>
                         }
